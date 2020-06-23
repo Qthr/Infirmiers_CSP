@@ -1,0 +1,15 @@
+// Un exemple d'instance ou toutes les données sont décrites dans un même fichier texte
+
+instance =
+	< 
+	"enonce1",
+	  {
+	  	"../data/instances/enonce/decomposition/actes.txt",
+	  	"../data/instances/enonce/decomposition/adresses.txt",
+	  	"../data/instances/enonce/decomposition/indisponibilites.txt",
+	  	"../data/instances/enonce/decomposition/infirmiere.txt",
+	  	"../data/instances/enonce/decomposition/journee720.txt",
+	  	"../data/instances/enonce/decomposition/soins.txt",
+	  }
+    >;
+

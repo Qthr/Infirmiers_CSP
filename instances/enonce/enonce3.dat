@@ -1,0 +1,18 @@
+// Une variante de l'instance 2 (juste pour illustrer)
+// qui n'a pas de solution car la journée commence à 10h
+// ...alors qu'il y a des soins programmés plus tôt.
+
+// De façon générale, lorsque vous creez une instance pour faire des tests
+// Pensez à mettre en commentaire ce que vous voulez tester ou vérifier.
+
+instance =
+	< "enonce3",
+	  {
+	  	"../data/instances/enonce/journee10-20h30.txt",
+	  	"../data/instances/enonce/soins1.txt",
+	  	"../data/instances/enonce/adresses1.txt",
+//	  	"../data/instances/enonce/indispo1.txt",		// ligne commentée
+	  	"../data/actes.txt"
+	  }
+    >;
+

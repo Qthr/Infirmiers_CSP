@@ -1,0 +1,157 @@
+#mapid { 
+//	height:500px; 
+	height:500px; 
+}
+
+#instance { 
+	border=1px; 
+	background-color: #C9E2B0;
+	text-align: center;
+	
+}
+#instance:before { 
+	content:"Instance : ";
+	
+}
+plannings {
+   display:inline;
+}
+
+planning {
+  max-width:230px;
+  padding: 5px;
+  margin: 10px;
+  background-color: #C9E2B0;
+  border:2px black;
+  display:inline-block;
+  vertical-align: top;
+}
+
+planning nurse {
+  text-size: bigger;
+  font-weight: bold;
+  text-align: center;
+}
+planning nurse:before {
+  content: "Planning de ";
+  text-align: center;
+}
+
+
+visit {
+  max-width:200px;
+  padding: 2px;
+  margin: 10px;
+  background-color: coral;
+  border:2px black;
+  display:block;
+}
+
+place {
+  margin: 0px;
+  font-weight: bold;
+  text-align: left;
+  display:block
+}
+
+
+place {
+  margin: 0px;
+  font-weight: bold;
+  text-align: left;
+  display:block
+}
+
+schedule {
+  margin: 0px;
+  font-size: smaller;
+  display:block;
+}
+schedule:before {
+   content: "Horaire : ";
+  font-weight: bold;
+ }
+markerContent schedule {
+   font-weight: bold;;
+}
+markerContent schedule:before {
+   content: "";
+ }
+
+address {
+  font-size: smaller;
+  margin-left:20px;
+  border-left: solid green;
+  padding:5px;
+  max-width: 140px;
+  display:block;
+}
+
+markerContent address {
+   margin-left:10px;
+  border-left:  thick double green;
+}
+
+mvisit {
+  text-align: left;
+  display:block;
+  border-bottom: 1px dotted black;
+}
+
+markerContent place {
+  padding:2px;
+  display:inline
+}
+
+mvisit schedule {
+  display:block
+}
+
+order {
+  display:inline;
+}
+
+description {
+  margin: 0px;
+  text-align: left;
+  display:block
+  background-color: none;
+}
+mvisit nurse {
+  font-style:italic;
+}
+
+
+length:after {
+  content:"mn";
+}
+
+transit {
+  margin: 0px;
+  background-color: green;
+  text-align: center;
+  display:block;
+  border-radius: 10px;
+}
+transit:before {
+  content:"Temps de transit : ";
+}
+transit:after {
+  content:"mn";
+}
+
+attente {
+  margin: 5px;
+  padding: 5px;
+  background-color: red;
+  text-align: center;
+  display:block;
+  border-radius: 10px;
+}
+attente:before {
+   content:"Attente : ";
+}
+
+order:before  {
+  content: "Etape ";
+}

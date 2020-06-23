@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+ 	<!-- Leaflet’s CSS and library (after CSS)-->
+	<link rel="stylesheet" href="leaflet/leaflet.css"/>
+    <script src="leaflet/leaflet.js">
+   	</script>
+   	
+ 	<!-- Data generated from the instance solution -->
+   	 <script src="dataVis.js"> </script>		
+
+ 	<!-- Formatting functions -->
+   	 <script src="formatting.js"> </script>		
+
+   	<link rel="stylesheet" href="map.css">		
+   	
+	 <title>Organisation d'une tournée d'infirmières</title>
+</head>
+<body>
+	<!-- the heading zone -->
+	<p id=instance>
+	</p>
+	
+	<!-- the map zone -->
+ 	<div id="mapid">
+ 	</div>
+
+	<!-- the planning description zone -->
+	<div id=plannings>
+	</div>
+	
+	
+
+
+		
+	<script>
+	
+		function show_popup(la, lo) {
+				markerByCoord[la + "," + lo].openPopup();
+		}
+		
+		function hide_popup(la, lo) {
+				markerByCoord[la + "," + lo].closePopup();
+		}
+		// Main Header
+		document.getElementById('instance').innerHTML = 
+			instanceName  + " (par le modèle : "+ modelName + " ) <br/> Optimum = " + optimum  ;
+		
+		// Map part
+		 var mymap = L.map('mapid').setView(mapCenter,zoomLevel);
+
+		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    		maxZoom: 19,
+    		id: 'mapbox.streets',
+    		accessToken: 'pk.eyJ1IjoiY2hhdGFsaWMiLCJhIjoiY2p0eWg1dDZ3MDE4OTN5dDFwNDNmdGhkeiJ9.fcpvz-qV9c3a0D4-IJHcPQ'
+			}).addTo(mymap);
+
+
+	   // Checking if there are several nurse plannings (for tuning display)
+  		var multipleNurses = hasMultipleNurses(plannings);
+   	   // console.log("DEBUG:[main] multipleNurses = ",multipleNurses);
+		
+ 	   // Adding markers on the map for each point of interest
+	    var nbMarkers = poisVisits.length;
+ 	    //console.log("DEBUG:[main] nbMarkers = ",nbMarkers);
+ 	    var marker = [];
+ 	    var markerByCoord = {};
+		for(var i = 0; i < poisVisits.length ; i++) {
+//			console.log("DEBUG:[main] setting content for i = ",i);
+			var poi = poisVisits[i];
+//			var poiSteps = poi.steps;
+//			for (var j = 0;j < poiSteps.length;j++)
+//				console.log("DEBUG:[main] poiSteps[",j,"] = ",poiSteps[j]);
+		
+			var markerContent = content_marker( poi.steps);		
+			marker[i] = L.marker([poi.latitude,poi.longitude])
+			 					.addTo(mymap);
+			marker[i].bindPopup(markerContent);
+			markerByCoord[poi.latitude + "," + poi.longitude] = marker[i];
+		}
+				   
+		// Planning Part
+		document.getElementById('plannings').innerHTML =
+				format_plannings(plannings,markerByCoord);
+
+	</script>
+
+
+</body>
+
+<html>
